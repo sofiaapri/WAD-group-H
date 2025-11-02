@@ -62,7 +62,6 @@ body {
   min-height: 100vh;
   gap: 20px;
   padding: 20px 0; 
-  justify-content: center;
 }
 
 .sidebar {
@@ -78,7 +77,6 @@ body {
   padding: 20px;
   gap: 15px;
   background-color: var(--bg);
-  max-width: 900px;
 }
 
 .post > .post-content {
@@ -151,8 +149,30 @@ body {
 }
 
 .post-footer .like {
-    width: 50px;
-    height: 40px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.post-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  margin: 10px 0;
+  border-radius: 10px;
+  object-fit: contain;
+  background: transparent;
+}
+
+.meta {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
 }
 
 .footer {
@@ -258,16 +278,58 @@ nav {
   background: #fff;
 }
 
-#posts {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center; 
+/* Dropdown */
+.profile {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+  display: none;
+  z-index: 100;
+}
+
+.dropdown.show {
+  display: block;
+}
+
+.menu-item {
+  padding: 10px 12px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.menu-item.name {
+  font-weight: bold;
+}
+
+.menu-item.email {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.menu-item.logout:hover {
+  background: #f3f4f6;
 }
 
 @media (max-width: 900px) {
-  .layout { gap: 12px; justify-content: center; }
+  .layout { gap: 12px; }
   .sidebar { width: 160px; }
   .post { width: 100%; }
 }
@@ -282,10 +344,35 @@ nav {
 }
 
 @media (max-width: 480px) {
-    body { padding: 5px; }
-  .post { width: 95%; }
-  .content { padding: 5px; }
   .form-grid { grid-template-columns: 1fr; }
   .form-grid > label { margin-top: 6px; }
   .grid-spacer { display: none; }
+}
+
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.meta .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  background: #eee;
+}
+
+#posts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center; 
 }
