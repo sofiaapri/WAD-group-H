@@ -110,15 +110,6 @@ body {
     line-height: 1.4;
     margin-bottom: 10px;
 }
-.post img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  max-height: 400px;
-  margin: 10px 0;
-  border-radius: 10px;
-  object-fit:  contain;
-}
 
 .post-header {
     display: flex;
@@ -165,6 +156,17 @@ body {
   background: transparent;
   object-fit: contain;
   display: inline-block;
+}
+
+.post-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  margin: 10px 0;
+  border-radius: 10px;
+  object-fit: contain;
+  background: transparent;
 }
 
 .meta {
