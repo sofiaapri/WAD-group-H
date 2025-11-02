@@ -68,3 +68,23 @@ function renderPosts(posts) {
     container.appendChild(div);
   });
 }
+
+// Dropdown
+const avatarBtn = document.getElementById("avatarBtn");
+const profileMenu = document.getElementById("profileMenu");
+
+if (avatarBtn && profileMenu) {
+  avatarBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const isOpen = profileMenu.classList.toggle("show");
+    avatarBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".profile")) {
+      profileMenu.classList.remove("show");
+      avatarBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+

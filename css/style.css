@@ -153,6 +153,12 @@ body {
     height: 40px;
 }
 
+.meta {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
 .footer {
     background-color: var(--gray);
     color: black;
@@ -254,6 +260,56 @@ nav {
   padding: 8px;
   border: 1px solid white;
   background: #fff;
+}
+
+/* Dropdown */
+.profile {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+  display: none;
+  z-index: 100;
+}
+
+.dropdown.show {
+  display: block;
+}
+
+.menu-item {
+  padding: 10px 12px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+.menu-item.name {
+  font-weight: bold;
+}
+
+.menu-item.email {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.menu-item.logout:hover {
+  background: #f3f4f6;
 }
 
 @media (max-width: 900px) {
