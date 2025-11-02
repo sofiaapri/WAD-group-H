@@ -56,9 +56,14 @@ function renderPosts(posts) {
           day: "numeric",
         })
       : "";
+    const avatarHTML = post.avatarUrl
+    ? `<img class="avatar" src="${post.avatarUrl}" alt="${post.author?.name || 'User'}" />`
+    : "";
+      
 
     div.innerHTML = `
       <div class="meta">
+        ${avatarHTML}
         ${post.author?.name ?? "Unknown"} ${date ? " · " + date : ""}
       </div>
       <p>${post.body}</p>
