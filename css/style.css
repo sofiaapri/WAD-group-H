@@ -62,6 +62,7 @@ body {
   min-height: 100vh;
   gap: 20px;
   padding: 20px 0; 
+  justify-content: center;
 }
 
 .sidebar {
@@ -78,7 +79,6 @@ body {
   gap: 15px;
   background-color: var(--bg);
   max-width: 900px;
-  margin: 0 auto;
 }
 
 .post > .post-content {
