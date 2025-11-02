@@ -45,6 +45,9 @@ function renderPosts(posts) {
   const container = document.getElementById("posts");
   container.innerHTML = "";
 
+  const defaultAvatar = "res/images/icon.png";
+  const likeIcon = "res/images/like.png";
+
   posts.forEach(post => {
     const div = document.createElement("div");
     div.className = "post";
@@ -56,18 +59,22 @@ function renderPosts(posts) {
           day: "numeric",
         })
       : "";
-    const avatarHTML = post.avatarUrl
-    ? `<img class="avatar" src="${post.avatarUrl}" alt="${post.author?.name || 'User'}" />`
-    : "";
-      
 
     div.innerHTML = `
-      <div class="meta">
-        ${avatarHTML}
-        ${post.author?.name ?? "Unknown"} ${date ? " · " + date : ""}
+      <div class="post-header">
+        <img class="user" src="${defaultAvatar}" alt="avatar">
+        <span class="author">${post.author?.name ?? "Unknown"}</span>
+        ${date ? `<span class="date">${date}</span>` : ""}
       </div>
-      <p>${post.body}</p>
-      ${post.imageUrl ? `<img src="${post.imageUrl}" alt="Post image" />` : ""}
+
+      <div class="post-content">
+        <p>${post.body}</p>
+        ${post.imageUrl ? `<img class="post-image" src="${post.imageUrl}" alt="Post image" />` : ""}
+      </div>
+
+      <div class="post-footer">
+        <img class="like" src="${likeIcon}" alt="Like">
+      </div>
     `;
 
     container.appendChild(div);
@@ -75,21 +82,16 @@ function renderPosts(posts) {
 }
 
 // Dropdown
-const avatarBtn = document.getElementById("avatarBtn");
+const avatarImg   = document.getElementById("avatarImg");
 const profileMenu = document.getElementById("profileMenu");
 
-if (avatarBtn && profileMenu) {
-  avatarBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const isOpen = profileMenu.classList.toggle("show");
-    avatarBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-  });
+if (avatarImg && profileMenu) {
+  avatarImg.setAttribute("aria-haspopup", "menu");
+  avatarImg.setAttribute("aria-controls", "profileMenu");
+  avatarImg.setAttribute("aria-expanded", "false");
 
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".profile")) {
-      profileMenu.classList.remove("show");
-      avatarBtn.setAttribute("aria-expanded", "false");
-    }
+  avatarImg.addEventListener("click", () => {
+    const open = profileMenu.classList.toggle("show");
+    avatarImg.setAttribute("aria-expanded", open ? "true" : "false");
   });
 }
-
