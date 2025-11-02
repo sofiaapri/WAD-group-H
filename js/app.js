@@ -86,12 +86,11 @@ const avatarImg   = document.getElementById("avatarImg");
 const profileMenu = document.getElementById("profileMenu");
 
 if (avatarImg && profileMenu) {
-  avatarImg.setAttribute("aria-haspopup", "menu");
-  avatarImg.setAttribute("aria-controls", "profileMenu");
-  avatarImg.setAttribute("aria-expanded", "false");
-
-  avatarImg.addEventListener("click", () => {
-    const open = profileMenu.classList.toggle("show");
-    avatarImg.setAttribute("aria-expanded", open ? "true" : "false");
+  avatarImg.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    profileMenu.classList.toggle("show");
   });
+
+  profileMenu.addEventListener("click", (e) => e.stopPropagation());
 }

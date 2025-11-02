@@ -159,8 +159,13 @@ body {
 }
 
 .post-footer .like {
-    width: 50px;
-    height: 40px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+  object-fit: contain;
+  display: inline-block;
 }
 
 .meta {
